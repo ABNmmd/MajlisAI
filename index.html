@@ -20,8 +20,10 @@
                 <!-- <h1>AI Meeting Assistant</h1> -->
                 <p>Streamline your meetings with AI-powered transcription, summarization, and task management.<br>Upload
                     or record audio, and let our assistant do the rest.</p>
-                <form id="waitlist-form">
-                    <input type="email" placeholder="Enter your email" required>
+                <form id="waitlist-form"
+                    action="https://docs.google.com/forms/d/e/1FAIpQLScbWOu4Rw-01o4rPpF86X1CmMB5jYT5_dgpH1zvU8UIiMt4rg/formResponse"
+                    method="post" target="hidden_iframe">
+                    <input type="email" name="entry.29427799" id="email" placeholder="Enter your email" required>
                     <button type="submit">Join Waitlist</button>
                 </form>
             </section>
@@ -134,9 +136,12 @@
                 <h2>Join the Waitlist Today</h2>
                 <p>Be among the first to transform your meeting workflow with our powerful AI-driven tools. Sign up now!
                 </p>
-                <form id="waitlist-form" action="https://docs.google.com/forms/d/e/1FAIpQLScbWOu4Rw-01o4rPpF86X1CmMB5jYT5_dgpH1zvU8UIiMt4rg/formResponse">
+                <form id="waitlist-form"
+                    action="https://docs.google.com/forms/d/e/1FAIpQLScbWOu4Rw-01o4rPpF86X1CmMB5jYT5_dgpH1zvU8UIiMt4rg/formResponse"
+                    method="post" target="hidden_iframe">
                     <input type="email" name="entry.29427799" id="email" placeholder="Enter your email" required>
                     <button type="submit">Join Waitlist</button>
+                    <iframe name="hidden_iframe" id="hidden_iframe" style="display: 'none'"></iframe>
                 </form>
             </section>
         </main>
