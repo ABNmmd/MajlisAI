@@ -125,7 +125,18 @@ button[type="submit"]:hover {
 
 .feature,
 .benefit {
+    border: 2px solid var(--bg-light);
+    border-radius: 0.5rem; /* Rounded corners */
+    padding: 2rem; /* Inner padding for content */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
     text-align: center;
+}
+
+.feature:hover,
+.benefit:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Deeper shadow on hover */
 }
 
 .features>h2,
