@@ -73,5 +73,47 @@ const addScrollProgress = () => {
 document.addEventListener('DOMContentLoaded', function() {
     // ... existing code ...
     addScrollProgress();
+
+    // Mobile menu functionality
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const mobileMenuClose = document.querySelector('.mobile-menu-close');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const mobileMenuLinks = document.querySelectorAll('.mobile-menu-links a');
+
+    mobileMenuBtn?.addEventListener('click', () => {
+        mobileMenu.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+
+    mobileMenuClose?.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+
+    mobileMenuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+
+    // Header scroll effect
+    const header = document.querySelector('.header');
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        // Show/hide header based on scroll direction
+        if (currentScroll > lastScroll && currentScroll > 100) {
+            // Scrolling down & past header
+            header.classList.add('hidden');
+        } else {
+            // Scrolling up or at top
+            header.classList.remove('hidden');
+        }
+        
+        lastScroll = currentScroll;
+    });
 });
 
