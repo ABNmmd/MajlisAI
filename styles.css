@@ -1,13 +1,15 @@
 :root {
-    --primary-color: #3b82f6;
-    --primary-hover: #2563eb;
+    --primary-color: #4F46E5;
+    --primary-hover: #4338CA;
     --text-color: #ffffff;
-    --text-light: #b0b0b0;
-    --bg-color: #121020;
-    --bg-light: #3b82f63d;
+    --text-light: #94A3B8;
+    --bg-color: #0F172A;
+    --bg-light: rgba(79, 70, 229, 0.1);
     --toast-success: #10B981;
     --toast-error: #EF4444;
     --animation-timing: cubic-bezier(0.4, 0, 0.2, 1);
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --card-border: rgba(255, 255, 255, 0.1);
 }
 
 * {
@@ -60,7 +62,7 @@ section {
 
 .hero {
     position: relative;
-    padding: 4rem 0;
+    padding: 6rem 0 4rem;
     overflow: hidden;
 }
 
@@ -81,9 +83,12 @@ section {
 }
 
 h1 {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     font-weight: bold;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #4F46E5 0%, #A855F7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 h2 {
@@ -147,22 +152,22 @@ button[type="submit"]:hover {
 
 .feature,
 .benefit {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    backdrop-filter: blur(12px);
+    padding: 2.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
-    border-radius: 0.5rem; /* Rounded corners */
-    padding: 2rem; /* Inner padding for content */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
     text-align: center;
     animation: fadeInUp 0.6s var(--animation-timing) backwards;
 }
 
 .feature:hover,
 .benefit:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(79, 70, 229, 0.2);
     border-color: var(--primary-color);
-    transform: translateY(-5px);
-    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.2);
 }
 
 .features>h2,
@@ -171,14 +176,10 @@ button[type="submit"]:hover {
 }
 
 .icon {
-    width: 3rem;
-    height: 3rem;
-    margin-bottom: 1rem;
-    fill: none;
-    stroke: var(--primary-color);
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+    width: 3.5rem;
+    height: 3.5rem;
+    stroke: url(#gradient);
+    margin-bottom: 1.5rem;
 }
 
 .cta {
@@ -203,21 +204,20 @@ form {
 }
 
 input[type="email"] {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    padding: 0.75rem 1rem;
-    border-radius: 0.375rem;
-    color: var(--text-color);
+    background: rgba(255, 255, 255, 0.03);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem 1.5rem;
+    border-radius: 0.75rem;
+    font-size: 1rem;
     width: 100%;
-    max-width: 300px;
+    max-width: 360px;
     transition: all 0.3s ease;
 }
 
 input[type="email"]:focus {
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
-    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15);
+    background: rgba(255, 255, 255, 0.05);
 }
 
 footer {
@@ -487,7 +487,7 @@ button[type="submit"].loading::after {
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(30px);
     }
     to {
         opacity: 1;
@@ -544,12 +544,14 @@ button[type="submit"].loading::after {
 }
 
 .gradient-button {
-    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    background: linear-gradient(135deg, #4F46E5 0%, #A855F7 100%);
+    padding: 1rem 2rem;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
     border: none;
     color: white;
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.375rem;
-    font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
@@ -557,8 +559,8 @@ button[type="submit"].loading::after {
 }
 
 .gradient-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(79, 70, 229, 0.4);
 }
 
 /* Enhanced hero section */
@@ -571,7 +573,7 @@ button[type="submit"].loading::after {
 .hero-content {
     position: relative;
     z-index: 2;
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
     text-align: center;
     display: flex;
@@ -607,15 +609,15 @@ button[type="submit"].loading::after {
 /* Animation keyframes */
 @keyframes pulse {
     0% {
-        transform: scale(1);
+        transform: scale(1) rotate(0deg);
         opacity: 0.5;
     }
     50% {
-        transform: scale(1.05);
+        transform: scale(1.05) rotate(1deg);
         opacity: 0.7;
     }
     100% {
-        transform: scale(1);
+        transform: scale(1) rotate(0deg);
         opacity: 0.5;
     }
 }
@@ -635,10 +637,10 @@ button[type="submit"].loading::after {
 
 .step {
     position: relative;
-    padding: 2rem;
-    background: rgba(255, 255, 255, 0.02);
-    border-radius: 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2.5rem;
+    background: var(--card-bg);
+    border-radius: 1.25rem;
+    border: 1px solid var(--card-border);
     transition: all 0.3s ease;
 }
 
@@ -648,14 +650,33 @@ button[type="submit"].loading::after {
 }
 
 .step-number {
-    width: 2.5rem;
-    height: 2.5rem;
-    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    background: linear-gradient(135deg, #4F46E5 0%, #A855F7 100%);
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    margin: 0 auto 1rem;
     color: white;
+}
+
+/* Enhanced responsive design */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .feature,
+    .benefit,
+    .step {
+        padding: 2rem;
+    }
+    
+    .feature-grid,
+    .benefit-grid,
+    .steps {
+        gap: 1.5rem;
+    }
 }
