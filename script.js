@@ -1,4 +1,4 @@
-Ydocument.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('waitlist-form');
 
     form.addEventListener('submit', async function (e) {
@@ -83,24 +83,36 @@ document.querySelectorAll('.mobile-menu-links a').forEach((link, index) => {
 
 // Initialize
 document.addEventListener('DOMContentLoaded', function() {
-    // ... existing code ...
-    addScrollProgress();
+    // Scroll Progress
+    const scrollProgress = document.createElement('div');
+    scrollProgress.className = 'scroll-progress';
+    document.body.appendChild(scrollProgress);
 
-    // Mobile menu functionality
+    window.addEventListener('scroll', () => {
+        const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = window.scrollY / windowHeight;
+        scrollProgress.style.transform = `scaleX(${progress})`;
+    });
+
+    // Mobile Menu
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const mobileMenuClose = document.querySelector('.mobile-menu-close');
     const mobileMenu = document.querySelector('.mobile-menu');
+    const mobileMenuClose = document.querySelector('.mobile-menu-close');
     const mobileMenuLinks = document.querySelectorAll('.mobile-menu-links a');
 
-    mobileMenuBtn?.addEventListener('click', () => {
-        mobileMenu.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    });
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    }
 
-    mobileMenuClose?.addEventListener('click', () => {
-        mobileMenu.classList.remove('active');
-        document.body.style.overflow = '';
-    });
+    if (mobileMenuClose) {
+        mobileMenuClose.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    }
 
     mobileMenuLinks.forEach(link => {
         link.addEventListener('click', () => {
@@ -108,6 +120,20 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.style.overflow = '';
         });
     });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (mobileMenu && mobileMenu.classList.contains('active') && 
+            !mobileMenu.contains(e.target) && 
+            !mobileMenuBtn.contains(e.target)) {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Form handling and other existing code...
+});
+
 
     // Header scroll effect
     const header = document.querySelector('.header');
@@ -153,5 +179,43 @@ document.addEventListener('DOMContentLoaded', function() {
 
     window.addEventListener('scroll', updateActiveLink);
     updateActiveLink(); // Initial check
-});
 
+    // Mobile Menu Functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const mobileMenuClose = document.querySelector('.mobile-menu-close');
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-links a');
+
+        // Toggle mobile menu
+        mobileMenuBtn?.addEventListener('click', () => {
+            console.log('Mobile menu button clicked');
+            mobileMenu.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        // Close mobile menu
+        mobileMenuClose?.addEventListener('click', () => {
+            console.log('Mobile menu close button clicked');
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        // Close menu when clicking a link
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (mobileMenu.classList.contains('active') && 
+                !mobileMenu.contains(e.target) && 
+                !mobileMenuBtn.contains(e.target)) {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    });
