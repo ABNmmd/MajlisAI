@@ -325,11 +325,13 @@ nav {
     justify-content: center;
     align-items: center;
     padding: 1rem 2rem;
-    gap: 3rem;
+    position: relative;
 }
 
 .logo-small {
     height: 2.8rem;
+    position: absolute;
+    left: 2rem;
 }
 
 .logo-small img {
@@ -375,7 +377,7 @@ nav {
     font-size: 0.9rem !important;
 }
 
-/* Mobile Menu Styles */
+/* Mobile Menu Button Styles */
 .mobile-menu-btn {
     display: none;
     background: none;
@@ -383,22 +385,34 @@ nav {
     color: var(--text-color);
     cursor: pointer;
     padding: 0.5rem;
+    z-index: 1000;
 }
 
+/* Hide hamburger when menu is active */
+.mobile-menu.active + nav .mobile-menu-btn {
+    display: none;
+}
+
+/* Mobile Menu Styles */
 .mobile-menu {
     position: fixed;
     top: 0;
-    right: -100%;
+    left: 0;
     width: 100%;
     height: 100vh;
-    background: var(--bg-color);
+    background-color: var(--bg-color);
     padding: 2rem;
-    transition: right 0.3s ease;
     z-index: 1001;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    transform: translateX(100%);
 }
 
 .mobile-menu.active {
-    right: 0;
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
 }
 
 .mobile-menu-header {
@@ -408,11 +422,9 @@ nav {
     margin-bottom: 2rem;
 }
 
-.mobile-logo {
-    height: 2.5rem;
-}
-
 .mobile-menu-close {
+    z-index: 1002;
+    position: relative;
     background: none;
     border: none;
     color: var(--text-color);
@@ -420,10 +432,21 @@ nav {
     padding: 0.5rem;
 }
 
+.mobile-menu-close svg {
+    stroke: var(--text-color);
+}
+
 .mobile-menu-links {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    align-items: center;
+}
+
+.mobile-menu-links a {
+    color: var(--text-color);
+    font-size: 1.2rem;
+    font-weight: 500;
 }
 
 /* Enhanced Footer Styles */
@@ -983,4 +1006,143 @@ h1, h2, h3 {
 .feature p, .benefit p {
     font-size: 0.95rem;
     line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    /* Navigation */
+    .nav-links {
+        display: none;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    /* Hero Section */
+    .hero {
+        padding: 6rem 1rem 4rem;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+        line-height: 1.2;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+        padding: 0 1rem;
+    }
+
+    .logo {
+        width: 10rem;
+        height: 10rem;
+    }
+
+    /* Forms */
+    .hero-cta form, #waitlist-form {
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+        max-width: 100%;
+        padding: 0 1rem;
+    }
+
+    .hero-cta input[type="email"],
+    .hero-cta button {
+        width: 100%;
+    }
+
+    /* Features & Benefits Grid */
+    .feature-grid, .benefit-grid {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+        gap: 1.5rem;
+    }
+
+    .feature, .benefit {
+        padding: 1.5rem;
+    }
+
+    /* How it Works */
+    .steps {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+        gap: 2rem;
+    }
+
+    /* Section Spacing */
+    section {
+        padding: 4rem 0;
+    }
+
+    section h2 {
+        font-size: 2rem;
+        padding: 0 1rem;
+    }
+
+    /* CTA Section */
+    .cta {
+        padding: 4rem 1rem;
+    }
+
+    .cta-content {
+        width: 100%;
+    }
+
+    /* Footer */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 2rem 1rem;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .legal-links {
+        justify-content: center;
+    }
+}
+
+/* Ensure mobile menu button is visible on mobile */
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: block;
+        z-index: 1002; /* Ensure it's above the mobile menu */
+    }
+
+    .nav-links {
+        display: none;
+    }
+}
+
+/* Update nav styles */
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 2rem;
+    position: relative;
+}
+
+.logo-small {
+    position: absolute;
+    left: 2rem;
+}
+
+/* Only change to space-between on mobile */
+@media (max-width: 768px) {
+    nav {
+        justify-content: space-between;
+    }
+    
+    .logo-small {
+        position: static;
+    }
 }
