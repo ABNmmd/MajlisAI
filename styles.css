@@ -80,11 +80,12 @@ section {
     height: 200%;
     background: radial-gradient(
         circle at center,
-        rgba(59, 130, 246, 0.1) 0%,
+        rgba(79, 70, 229, 0.08) 0%,
+        rgba(168, 85, 247, 0.05) 35%,
         transparent 70%
     );
-    z-index: -1;
-    animation: pulse 10s ease-in-out infinite;
+    z-index: 0;
+    animation: heroGradient 15s ease-in-out infinite;
 }
 
 h1 {
@@ -725,11 +726,12 @@ button[type="submit"].loading::after {
     height: 200%;
     background: radial-gradient(
         circle at center,
-        rgba(59, 130, 246, 0.1) 0%,
+        rgba(79, 70, 229, 0.08) 0%,
+        rgba(168, 85, 247, 0.05) 35%,
         transparent 70%
     );
     z-index: 1;
-    animation: pulse 10s ease-in-out infinite;
+    animation: heroGradient 15s ease-in-out infinite;
 }
 
 .hero-cta {
@@ -743,18 +745,18 @@ button[type="submit"].loading::after {
 }
 
 /* Animation keyframes */
-@keyframes pulse {
+@keyframes heroGradient {
     0% {
         transform: scale(1) rotate(0deg);
-        opacity: 0.5;
+        opacity: 0.4;
     }
     50% {
-        transform: scale(1.05) rotate(1deg);
-        opacity: 0.7;
+        transform: scale(1.1) rotate(2deg);
+        opacity: 0.6;
     }
     100% {
         transform: scale(1) rotate(0deg);
-        opacity: 0.5;
+        opacity: 0.4;
     }
 }
 
