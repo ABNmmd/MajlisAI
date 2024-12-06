@@ -11,21 +11,38 @@
 
 <body>
     <div class="container">
+        <!-- <header class="header">
+            <nav>
+                <div class="logo-small">
+                    <img src="./assets/logo.png" alt="MajlisAI Logo">
+                </div>
+                <div class="nav-links">
+                    <a href="#features">Features</a>
+                    <a href="#benefits">Benefits</a>
+                    <a href="#pricing">Pricing</a>
+                    <button class="cta-button">Join Waitlist</button>
+                </div>
+            </nav>
+        </header> -->
         <main>
-            <div class="logo">
-                <img src="./assets/image.png" alt="AI Meeting Assistant Logo">
-            </div>
-
+            
             <section class="hero">
-                <!-- <h1>AI Meeting Assistant</h1> -->
-                <p>Streamline your meetings with AI-powered transcription, summarization, and task management.<br>Upload
-                    or record audio, and let our assistant do the rest.</p>
-                <form id="waitlist-form-top"
-                    action="https://docs.google.com/forms/d/e/1FAIpQLScbWOu4Rw-01o4rPpF86X1CmMB5jYT5_dgpH1zvU8UIiMt4rg/formResponse"
-                    method="post" target="hidden_iframe">
-                    <input type="email" name="entry.29427799" id="email1" placeholder="Enter your email" required>
-                    <button type="submit">Join Waitlist</button>
-                </form>
+                <div class="hero-content">
+                    <div class="logo">
+                        <img src="./assets/image.png" alt="AI Meeting Assistant Logo">
+                    </div>
+                    <h1 class="gradient-text">Transform Your Meetings with AI</h1>
+                    <p>Streamline your meetings with AI-powered transcription, summarization, and task management.<br>Upload
+                        or record audio, and let our assistant do the rest.</p>
+                    <div class="hero-cta">
+                        <form id="waitlist-form-top">
+                            <input type="email" name="entry.29427799" placeholder="Enter your email" required>
+                            <button type="submit" class="gradient-button">Join Waitlist</button>
+                        </form>
+                        <p class="form-subtitle">Join 100+ others on the waitlist</p>
+                    </div>
+                </div>
+                <div class="hero-background"></div>
             </section>
 
             <section class="features">
@@ -143,10 +160,51 @@
                     <button type="submit">Join Waitlist</button>
                 </form>
             </section>
+
+            <section class="how-it-works">
+                <h2 class="gradient-text">How MajlisAI Works</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Record or Upload</h3>
+                        <p>Simply record your meeting directly in the browser or upload an existing audio file</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>AI Processing</h3>
+                        <p>Our AI transcribes the audio and generates summaries in your preferred language</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Get Results</h3>
+                        <p>Receive accurate transcriptions, summaries, and actionable to-do lists</p>
+                    </div>
+                </div>
+            </section>
         </main>
         
         <footer>
-            <p>&copy; 2024 AI Meeting Assistant. All rights reserved.</p>
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Product</h3>
+                    <!-- Add links -->
+                </div>
+                <div class="footer-col">
+                    <h3>Company</h3>
+                    <!-- Add links -->
+                </div>
+                <div class="footer-col">
+                    <h3>Connect</h3>
+                    <!-- Add social media links -->
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 MajlisAI. All rights reserved.</p>
+                <div class="legal-links">
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/terms">Terms of Service</a>
+                </div>
+            </div>
         </footer>
         <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
     </div>
