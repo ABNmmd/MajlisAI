@@ -56,18 +56,30 @@ const showToast = (message, type = 'success') => {
 };
 
 // Add scroll progress indicator
-const addScrollProgress = () => {
-    const progress = document.createElement('div');
-    progress.className = 'scroll-progress';
-    document.body.appendChild(progress);
+const scrollProgress = document.createElement('div');
+scrollProgress.className = 'scroll-progress';
+document.body.appendChild(scrollProgress);
 
-    window.addEventListener('scroll', () => {
-        const scrolled = window.scrollY;
-        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-        const percentage = scrolled / maxScroll;
-        progress.style.transform = `scaleX(${percentage})`;
+window.addEventListener('scroll', () => {
+    const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = window.scrollY / windowHeight;
+    scrollProgress.style.transform = `scaleX(${progress})`;
+});
+
+// Add loading state to forms
+document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', e => {
+        const button = form.querySelector('button[type="submit"]');
+        button.classList.add('loading');
+        // Remove loading class after form submission (adjust timing as needed)
+        setTimeout(() => button.classList.remove('loading'), 2000);
     });
-};
+});
+
+// Add index for staggered mobile menu animations
+document.querySelectorAll('.mobile-menu-links a').forEach((link, index) => {
+    link.style.setProperty('--index', index);
+});
 
 // Initialize
 document.addEventListener('DOMContentLoaded', function() {
@@ -115,5 +127,31 @@ document.addEventListener('DOMContentLoaded', function() {
         
         lastScroll = currentScroll;
     });
+
+    // Update active nav link based on scroll position
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    function updateActiveLink() {
+        const scrollPosition = window.scrollY;
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100; // Adjust offset as needed
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${sectionId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }
+
+    window.addEventListener('scroll', updateActiveLink);
+    updateActiveLink(); // Initial check
 });
 
