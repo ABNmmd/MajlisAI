@@ -46,6 +46,8 @@ main {
 
 section {
     width: 100%;
+    padding: 6rem 0;
+    position: relative;
 }
 
 .logo {
@@ -61,8 +63,11 @@ section {
 }
 
 .hero {
+    padding: 8rem 0 6rem;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
     position: relative;
-    padding: 6rem 0 4rem;
     overflow: hidden;
 }
 
@@ -83,7 +88,7 @@ section {
 }
 
 h1 {
-    font-size: 3.5rem;
+    font-size: 3rem;
     font-weight: bold;
     margin-bottom: 1.5rem;
     background: linear-gradient(135deg, #4F46E5 0%, #A855F7 100%);
@@ -192,17 +197,47 @@ button[type="submit"]:hover {
 }
 
 .cta {
-    background-color: var(--bg-light);
-    color: white;
-    padding: 3rem 2rem;
-    border-radius: 0.5rem;
     text-align: center;
-    margin-bottom: 4rem;
+    padding: 8rem 0;
+    background: rgba(15, 23, 42, 0.3);
+    backdrop-filter: blur(100px);
+    position: relative;
+    overflow: hidden;
 }
 
-.cta h2,
+.cta::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+        circle at center,
+        rgba(79, 70, 229, 0.1) 0%,
+        transparent 70%
+    );
+    z-index: 0;
+    animation: pulse 15s ease-in-out infinite;
+}
+
+.cta > * {
+    position: relative;
+    z-index: 1;
+}
+
+.cta h2 {
+    margin-bottom: 1.5rem;
+}
+
 .cta p {
-    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.cta-content {
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 form {
@@ -394,25 +429,22 @@ nav {
 /* Enhanced Footer Styles */
 .footer-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 3rem;
-    padding: 4rem 0;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4rem;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .footer-col h3 {
     color: var(--text-color);
     margin-bottom: 1.5rem;
-    font-size: 1.1rem;
-}
-
-.footer-col ul {
-    list-style: none;
-}
-
-.footer-col ul li {
-    margin-bottom: 0.75rem;
 }
 
 .footer-col a {
@@ -421,17 +453,17 @@ nav {
 }
 
 .footer-col a:hover {
-    color: var(--primary-color);
+    color: var(--text-color);
 }
 
 .footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 2rem 0;
+    border-top: 1px solid var(--card-border);
+    padding: 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .legal-links {
@@ -439,22 +471,7 @@ nav {
     gap: 2rem;
 }
 
-.legal-links a {
-    color: var(--text-light);
-    font-size: 0.9rem;
-    transition: color 0.3s ease;
-}
-
-.legal-links a:hover {
-    color: var(--primary-color);
-}
-
-/* Responsive Design */
 @media (max-width: 768px) {
-    .nav-links {
-        display: none; /* You might want to implement a mobile menu */
-    }
-    
     .footer-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
@@ -463,6 +480,7 @@ nav {
     
     .footer-bottom {
         flex-direction: column;
+        gap: 1rem;
         text-align: center;
     }
     
@@ -474,6 +492,16 @@ nav {
 /* Smooth scroll behavior */
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+/* Optional: Add active state for nav links */
+.nav-links a.active {
+    color: #fff;
+}
+
+.nav-links a.active::after {
+    width: 100%;
 }
 
 /* Modern loading state for buttons */
@@ -700,7 +728,7 @@ button[type="submit"].loading::after {
 
 /* How it Works section */
 .how-it-works {
-    padding: 4rem 0;
+    padding: 8rem 0;
     text-align: center;
 }
 
@@ -754,5 +782,112 @@ button[type="submit"].loading::after {
     .benefit-grid,
     .steps {
         gap: 1.5rem;
+    }
+}
+
+/* Features Section */
+.features {
+    background: rgba(15, 23, 42, 0.3);
+    backdrop-filter: blur(100px);
+    margin-top: 2rem;
+}
+
+.features h2,
+.benefits h2,
+.how-it-works h2 {
+    text-align: center;
+    margin-bottom: 4rem;
+    font-size: 2.5rem;
+}
+
+/* Benefits Section */
+.benefits {
+    padding-top: 8rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    section {
+        padding: 4rem 0;
+    }
+    
+    .hero {
+        padding: 6rem 0 4rem;
+        min-height: auto;
+    }
+    
+    .features h2,
+    .benefits h2,
+    .how-it-works h2 {
+        margin-bottom: 3rem;
+        font-size: 2rem;
+    }
+}
+
+/* 404 Page Styles */
+.not-found {
+    min-height: calc(100vh - 180px); /* Adjust based on header/footer height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 4rem 1rem;
+}
+
+.not-found-content {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.not-found h1 {
+    font-size: 8rem;
+    margin-bottom: 0;
+    line-height: 1;
+}
+
+.not-found h2 {
+    font-size: 2.5rem;
+    margin: 1rem 0 2rem;
+}
+
+.not-found p {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    margin-bottom: 3rem;
+    max-width: 500px;
+}
+
+.not-found .gradient-button {
+    display: inline-block;
+}
+
+.not-found-background {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+        circle at center,
+        rgba(79, 70, 229, 0.1) 0%,
+        transparent 70%
+    );
+    z-index: 0;
+    animation: pulse 15s ease-in-out infinite;
+}
+
+@media (max-width: 768px) {
+    .not-found h1 {
+        font-size: 6rem;
+    }
+    
+    .not-found h2 {
+        font-size: 2rem;
+    }
+    
+    .not-found p {
+        font-size: 1rem;
     }
 }
