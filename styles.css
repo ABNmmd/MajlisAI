@@ -326,12 +326,11 @@ nav {
     align-items: center;
     padding: 1rem 2rem;
     position: relative;
+    gap: 3rem;
 }
 
 .logo-small {
     height: 2.8rem;
-    position: absolute;
-    left: 2rem;
 }
 
 .logo-small img {
@@ -385,7 +384,9 @@ nav {
     color: var(--text-color);
     cursor: pointer;
     padding: 0.5rem;
-    z-index: 1000;
+    position: absolute;
+    right: 2rem;
+    z-index: 1002;
 }
 
 /* Hide hamburger when menu is active */
@@ -402,17 +403,12 @@ nav {
     height: 100vh;
     background-color: var(--bg-color);
     padding: 2rem;
-    z-index: 1001;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    transform: translateX(100%);
+    z-index: 2000;
+    display: none;
 }
 
 .mobile-menu.active {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(0);
+    display: block;
 }
 
 .mobile-menu-header {
@@ -423,17 +419,12 @@ nav {
 }
 
 .mobile-menu-close {
-    z-index: 1002;
-    position: relative;
     background: none;
     border: none;
     color: var(--text-color);
     cursor: pointer;
     padding: 0.5rem;
-}
-
-.mobile-menu-close svg {
-    stroke: var(--text-color);
+    z-index: 2001;
 }
 
 .mobile-menu-links {
@@ -441,12 +432,14 @@ nav {
     flex-direction: column;
     gap: 2rem;
     align-items: center;
+    padding-top: 2rem;
 }
 
 .mobile-menu-links a {
     color: var(--text-color);
     font-size: 1.2rem;
     font-weight: 500;
+    text-decoration: none;
 }
 
 /* Enhanced Footer Styles */
@@ -1129,20 +1122,43 @@ nav {
     align-items: center;
     padding: 1rem 2rem;
     position: relative;
+    gap: 3rem;
 }
 
 .logo-small {
-    position: absolute;
-    left: 2rem;
+    height: 2.8rem;
 }
 
-/* Only change to space-between on mobile */
+.logo-small img {
+    height: 100%;
+    width: auto;
+}
+
+/* Mobile Menu Button Styles */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 0.5rem;
+    position: absolute;
+    right: 2rem;
+    z-index: 1002;
+}
+
+/* Update mobile styles */
 @media (max-width: 768px) {
     nav {
-        justify-content: space-between;
+        justify-content: flex-start;
+        gap: 0;
     }
     
-    .logo-small {
-        position: static;
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
     }
 }
