@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>AI Meeting Assistant</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="shortcut icon" href="./assets/logo.png" sizes="any" type="image/x-icon">
@@ -14,7 +14,9 @@
         <header class="header">
             <nav>
                 <div class="logo-small">
-                    <img src="./assets/logo.png" alt="MajlisAI Logo">
+                    <a href="/">
+                        <img src="./assets/logo.png" alt="MajlisAI Logo">
+                    </a>
                 </div>
                 <div class="nav-links">
                     <a href="#features">Features</a>
@@ -30,9 +32,14 @@
                     </svg>
                 </button>
             </nav>
+            
             <div class="mobile-menu">
                 <div class="mobile-menu-header">
-                    <img src="./assets/logo.png" alt="MajlisAI Logo" class="mobile-logo">
+                    <div class="logo-small">
+                        <a href="/">
+                            <img src="./assets/logo.png" alt="MajlisAI Logo">
+                        </a>
+                    </div>
                     <button class="mobile-menu-close" aria-label="Close Menu">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <line x1="18" y1="6" x2="6" y2="18"></line>
